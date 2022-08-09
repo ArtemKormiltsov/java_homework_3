@@ -1,7 +1,6 @@
 package guru.qa;
 
 import com.codeborne.selenide.Configuration;
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -15,7 +14,6 @@ public class GitHubPricingTest {
     @BeforeAll
     static void configure() {
         Configuration.browserSize = "1920x1020";
-        Configuration.holdBrowserOpen = true;
     }
 
     @Test
@@ -25,10 +23,4 @@ public class GitHubPricingTest {
         $("ul.list-style-none").$(byText("Compare plans")).click();
         $(".logged-out").shouldHave(text("Choose the plan that’s right for you.")).scrollTo();
     }
-
-    @AfterAll
-    static void config() {
-        Configuration.holdBrowserOpen = false;
-    }
-
 }

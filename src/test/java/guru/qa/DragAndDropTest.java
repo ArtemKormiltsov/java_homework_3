@@ -1,7 +1,6 @@
 package guru.qa;
 
 import com.codeborne.selenide.Configuration;
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -14,20 +13,14 @@ public class DragAndDropTest {
     @BeforeAll
     static void configure() {
         Configuration.browserSize = "1920x1020";
-        Configuration.holdBrowserOpen = true;
         Configuration.baseUrl = "https://the-internet.herokuapp.com";
     }
 
     @Test
-    void DragAndDropAction() {
+    void dragAndDropAction() {
         open("/drag_and_drop");
         $("#column-a").dragAndDropTo("#column-b");
         $("#column-a").shouldHave(text("B"));
         $("#column-b").shouldHave(text("A"));
-    }
-
-    @AfterAll
-    static void config() {
-        Configuration.holdBrowserOpen = false;
     }
 }
